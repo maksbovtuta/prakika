@@ -20,7 +20,7 @@
   <body>
     <div id="app">
       <h1>Пошук</h1>
-      <input placeholder="type name" v-model="searchName" />
+      <input placeholder="пошук" v-model="searchName" />
       <table>
         <tr v-for="(stud, index) in filteredStudents" :key="index">
           <td :class="{ 'red': stud.highlighted }">{{ stud.name }}</td>
