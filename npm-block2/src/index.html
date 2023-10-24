@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Statistics</title>
+    
+    <style>
+        #app {
+            margin: 10px;
+        }
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        td {
+            padding: 8px;
+            text-align: center;
+            border: 1px solid #333;
+            width: 150px;
+        }
+        input[type="checkbox"] {
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        .highlighted {
+            background-color: yellow;
+        }
+        a {
+            cursor: pointer;
+        }
+        .addStudent {
+            width: 60%;
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            width: 120px;
+            height: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <h1>Student Management</h1>
+    <input placeholder="Search by name" v-model="searchName" />
+    <table>
+        <tr v-for="(student, index) in filteredStudents" :key="index">
+            <!-- <td :class="{ 'highlighted': student.highlighted }">{{ student.name }}</td>
+            <td>
+                <input type="checkbox" v-model="student.workDone" />
+            </td>
+            <td>{{ student.group }}</td>
+            <td>{{ student.grade }}</td>
+            <td><a @click="deleteStudent(student.id)">Delete</a></td> -->
+        </tr>
+    </table>
+
+    <div class="addStudent">
+        <input placeholder="Name" v-model="newStudent.name" />
+        <input v-model="newStudent.workDone" type="checkbox" />
+        <select v-model="newStudent.group" id="groupSelect" name="group">
+            <option value="" disabled selected>Select Group</option>
+            <option value="Group A">Group A</option>
+            <option value="Group B">Group B</option>
+        </select>
+        <input v-model="newStudent.grade" type="number" placeholder="Grade" />
+        <button @click="addStudent">Add Student</button>
+    </div>
+    <h3 v-for="student in students">{{ student.name }}</h3>
+</div>
+<script src="main.js"></script>
+</body>
+<!-- <script>
+import { createApp } from 'vue'
+
+
+var studentData = [
+  {
+    id: 0,
+    name: "John Doe",
+    group: "Group A",
+    grade: 85,
+    workDone: true,
+  },
+  {
+    id: 1,
+    name: "Jane Smith",
+    group: "Group B",
+    grade: 92,
+    workDone: false,
+  },
+  {
+    id: 2,
+    name: "Bob Johnson",
+    group: "Group A",
+    grade: 78,
+    workDone: false,
+  },
+];
+
+const newStudent = {
+    id: "",
+    name: "",
+    group: "",
+    grade: "",
+    workDone: false,
+};
+
+createApp({
+    
+    data() {
+        return {
+            students: studentData,
+            searchName: "",
+            deleteLink: "",
+        }
+    },
+    computed: {
+        filteredStudents: function () {
+            const searchNameLower = this.searchName.toLowerCase();
+            return this.students.map((student) => ({
+                ...student,
+                highlighted:
+                    student.name.toLowerCase().includes(searchNameLower) &&
+                    searchNameLower.length > 0,
+            }));
+        },
+    },
+    methods: {
+        deleteStudent(id) {
+            const index = this.students.findIndex((student) => student.id === id);
+            if (index !== -1) {
+                this.students.splice(index, 1);
+            }
+        },
+        addStudent() {
+            newStudent.id = this.students.length + 1;
+            this.students.push({ ...newStudent });
+
+            newStudent.name = "";
+            newStudent.workDone = false;
+            newStudent.group = "";
+            newStudent.grade = "";
+        },
+    },
+
+}).mount('#app')
+
+</script> -->
+</html>
