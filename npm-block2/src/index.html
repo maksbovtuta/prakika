@@ -48,17 +48,17 @@
 </head>
 <body>
 <div id="app">
-    <h1>Student Management</h1>
+    <!-- <h1>Student Management</h1>
     <input placeholder="Search by name" v-model="searchName" />
     <table>
         <tr v-for="(student, index) in filteredStudents" :key="index">
-            <!-- <td :class="{ 'highlighted': student.highlighted }">{{ student.name }}</td>
+            <td :class="{ 'highlighted': student.highlighted }">{{ student.name }}</td>
             <td>
                 <input type="checkbox" v-model="student.workDone" />
             </td>
             <td>{{ student.group }}</td>
             <td>{{ student.grade }}</td>
-            <td><a @click="deleteStudent(student.id)">Delete</a></td> -->
+            <td><a @click="deleteStudent(student.id)">Delete</a></td>
         </tr>
     </table>
 
@@ -73,7 +73,7 @@
         <input v-model="newStudent.grade" type="number" placeholder="Grade" />
         <button @click="addStudent">Add Student</button>
     </div>
-    <h3 v-for="student in students">{{ student.name }}</h3>
+    <h3 v-for="student in students">{{ student.name }}</h3> -->
 </div>
 <script src="main.js"></script>
 </body>
