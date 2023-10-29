@@ -26,7 +26,12 @@
             </td>
             <td>{{ student.group }}</td>
             <td>{{ student.grade }}</td>
-            <td><a @click="deleteStudent(student._id)">Delete</a></td>
+            <td>
+                <a href="#" @click="deleteStudent(student._id)" 
+                    v-show="student.group === getCurrentUser.group"
+                    >Видалити
+                </a>
+            </td>
         </tr>
     </table>
 
@@ -97,6 +102,10 @@ export default{
         }
     },
     computed: {
+        getCurrentUser() {
+           return this.$store.getters.getUser
+            },
+
         filteredStudents: function () {
             const searchNameLower = this.searchName.toLowerCase();
             return this.students.map((student) => ({
@@ -126,7 +135,7 @@ export default{
             
         },
         selectStudent(student) {
-        this.selectedStudent = { ...studenyt }; //new copy of selected student
+        this.selectedStudent = { ...student }; //new copy of selected student
         },
         modalStudent(student) {
         this.modalStudentInfo = { ...student }; //new copy of selected student
